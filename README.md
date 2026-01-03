@@ -90,3 +90,37 @@ The project structure is:
 - [.github/workflows/playwright.yml](./.github/workflows/playwright.yml) file: GitHub actions for automating tests
 - [tests/](./tests/) folder: top level folder containing test files and other test subfolders
 
+### Running the tests
+
+To run the tests, enter:
+
+```sh
+npx playwright test
+```
+
+To view the report:
+
+```sh
+npx playwright show-report
+```
+
+To test only on one browser, like Chrome, use the `--project` flag:
+
+```sh
+npx playwright test --project chromium
+```
+
+#### Side note
+
+I added the following alias in my bash to shorten the command:
+
+```sh
+alias pw='npx playwright'
+```
+
+This has allowed me to run the same commands but in short:
+
+```sh
+pw test # instead of `npx playwright test`
+pw show-report # intead of `npx playwright show-report`
+```
