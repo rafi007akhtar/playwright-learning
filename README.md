@@ -4,7 +4,7 @@ Link to tutorial: https://learn.microsoft.com/en-us/training/modules/build-with-
 
 ## Details of the tutorial
 
-**End goal:** Build an end-to-end test with Playwright.
+**End goal:** ~~Build~~ Understand an end-to-end test with Playwright.
 
 **Objectives:**
 
@@ -43,27 +43,11 @@ Link to tutorial: https://learn.microsoft.com/en-us/training/modules/build-with-
 
 ## Playwright Core Concepts
 
-TODO: Expand on this as you code through the tutorial.
+The tutorial provides a brief overview of these concepts, but doesn't really provide any coding exercises that make use of these concepts.
 
-### TestConfig
+Some of them are: TestConfig, TestProject, Fixures, Navigation, Locators, Assertions, and more. I'll just add a link to the tutorial's page, which then has links to all these core concepts in the docs.
 
-### TestProject
-
-### Test Timeout
-
-### Fixtures
-
-### Navigation
-
-### Locators
-
-### Assertions
-
-### Annotations
-
-### use Options
-
-### Page object Models
+[Link to Core Concepts in the tutorial](https://learn.microsoft.com/en-us/training/modules/build-with-playwright/2-introduction-to-playwright).
 
 ## Getting started with Playwright
 
@@ -124,3 +108,34 @@ This has allowed me to run the same commands but in short:
 pw test # instead of `npx playwright test`
 pw show-report # intead of `npx playwright show-report`
 ```
+
+## Test Hierarchy
+
+- A **test-case** is a `test()` function. Each project instantiates its own `test()` object based on project configuration.
+  - A **test action** is every statement in a test-case that can be tracked in the reporter, trace-viewer or in UI mode tools.
+- A **test suite** is a group of test-cases.
+  - This grouping can be done _explicitly_, by placing the test-cases under the `test.describe()` method.
+  - This grouping can be done _implicitly_, by putting the similar test-case files under one directory, and Playwright will automatically place those test files in the same group.
+- Test suite hierachy:
+  - every test run has a **root suite**
+  - the root suite contains all the **project suites**
+  - each project suite contains all the test files for that project, called the **file suite**
+  - each file contains either individual test-cases, or explicitly grouped test-cases with `test.describe`
+  - example (AI-generated):
+  ```
+  Test Run/
+  ├── Root Suite
+  │   ├── User Interface Testing (Project Suite)
+  │   │   ├── login.spec.ts (File Suite)
+  │   │   ├── checkout.spec.ts (File Suite)
+  │   │   └── product.spec.ts (File Suite)
+  │   └── API Testing (Project Suite)
+  │       ├── user.spec.ts (File Suite)
+  │       └── order.spec.ts (File Suite)
+  ```
+
+---
+
+Skipping notes from the rest of the tutorial, and they are more about the superficial concepts of using Playwright, and doesn't really have any coding exercises where we can practise writing these tests ourselves.
+
+---
